@@ -1,5 +1,5 @@
 from time import sleep
-
+import task_functions
 
 
 def main():
