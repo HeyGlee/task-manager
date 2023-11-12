@@ -1,5 +1,5 @@
 from time import sleep
-import
+
 
 
 def main():
