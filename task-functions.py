@@ -1,7 +1,6 @@
 import datetime  # imports the datetime lib to get access to the datetime data type
 from time import sleep  # imports sleep to give the program some wait to make it seems as if its calculating
 
-
 tags = ["Finance",
         "Software Engineering",
         "Business",
@@ -27,7 +26,7 @@ class Task:
         self.description = "This is a basic task description."
         self.tags = []
 
-    def create_task(self):
+    def create_task(self, tasks):
         # gets the name and description of a task
         print("Task creation: ")
         print("-" * 50)
@@ -64,17 +63,17 @@ class Task:
             selected = input("Please select tags (type done to continue or tag number): ")
             if selected == "done":  # checks if value is done to break
                 break
-            try:    # checks to see if the value is an int else loop again
+            try:  # checks to see if the value is an int else loop again
                 selected = int(selected)
             except ValueError:
                 sleep(0.8)
                 print("Please enter a number or 'done'!")
                 continue
-            if 1 > selected > len(tags):    # checks to see if it is in the range of the list index
+            if 1 > selected > len(tags):  # checks to see if it is in the range of the list index
                 sleep(0.8)
                 print(f"Please enter a number between 1-{len(tags)}")
                 continue
-            self.tags.append(tags[selected - 1])    # adds the tag to the list
+            self.tags.append(tags[selected - 1])  # adds the tag to the list
 
         print("-" * 50)
         sleep(1)
@@ -99,3 +98,4 @@ class Task:
         sleep(1)
         print("Task created!")
         print("-" * 50)
+        tasks.append(self)
