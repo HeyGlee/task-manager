@@ -99,3 +99,29 @@ class Task:
         print("Task created!")
         print("-" * 50)
         tasks.append(self)
+
+    def delete_task(self, tasks):
+        del self
+        # print("Please select a task to delete: ")
+        # for i, v in enumerate(tasks):
+        #     print(f"{i + 1}) {v.name}")
+        #
+        # while True:
+        #     selected = input("Please type in the number to delete (or done to exit): ")
+        #
+        #     if selected == "done":  # checks if value is done to break
+        #
+        #
+        #     try:  # checks to see if the value is an int else loop again
+        #         selected = int(selected)
+        #     except ValueError:
+        #         sleep(0.8)
+        #         print("Please enter a number or 'done'!")
+        #         continue
+        #
+        #     if 1 > selected > len(tasks):  # checks to see if it is in the range of the list index
+        #         sleep(0.8)
+        #         print(f"Please enter a number between 1-{len(tasks)}")
+        #         continue
+
+        # confirmation = input(f"Please type in the name of the task ({tasks[selected].name})")
