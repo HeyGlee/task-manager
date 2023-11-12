@@ -32,4 +32,4 @@ their date due (recent, furthest) or their tags.
 
 If you have any ideas or want to add any features message me or fork.
 <hr>
-<i>Last update: 11/11/23</i>
+<i>Last update: 12/11/23</i>
