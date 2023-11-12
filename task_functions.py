@@ -13,7 +13,7 @@ tags = ["Finance",
         "School",
         "Project",
         "Homework",
-        "Family"
+        "Family",
         "Hard",
         "Easy",
         "Boring"]
@@ -26,7 +26,7 @@ class Task:
         self.description = "This is a basic task description."
         self.tags = []
 
-    def create_task(self, tasks):
+    def create_task(self, tasks, menu):
         # gets the name and description of a task
         print("Task creation: ")
         print("-" * 50)
@@ -40,6 +40,16 @@ class Task:
             try:
                 date = int(input(f"Please enter the {message} \"{self.name}\" is due: "))  # attempts to enter date
                 sleep(0.8)
+                today = datetime.date.today()
+                match message:
+                    case "year":
+                        if today.year > date:
+                            print(f"ERROR: Please enter the current year ({today.year}) or later!")
+                            get_date(message)
+                    case "month":
+                        if 1 > date or date > 12:
+                            print("ERROR: Please enter an actual month number!")
+                            get_date(message)
                 return date
             except ValueError:
                 print("ERROR: Please enter a number!")
@@ -53,8 +63,8 @@ class Task:
         def get_tags(tags_list: list):
             print("Tags:")
             sleep(0.5)
-            for i, v in enumerate(tags_list):
-                print(f"{i + 1}) {v}")
+            for index, value in enumerate(tags_list):
+                print(f"{index + 1}) {value}")
             print("-" * 50)
 
         get_tags(tags)
@@ -79,15 +89,15 @@ class Task:
         sleep(1)
         # display newly created task
         print(f"Task name: {self.name}")
-        print({self.description})
-        print(f"Date due: {self.date_due}")
-        print(f"Task name:", end=" ")
+        print(f"Task description: {self.description}")
+        print(f"Date due: {self.date_due.strftime('%Y-%m-%d')}")
+        print(f"Tags:", end=" ")
         for i, v in enumerate(self.tags):
-            if i != len(self.tags):
+            if i + 1 != len(self.tags):
                 print(v, end=", ")
             else:
                 print(v)
-        print("-" * 50)
+        print()
         print("Creating task ", end="")
         sleep(0.6)
         print(".", end="")
@@ -99,29 +109,9 @@ class Task:
         print("Task created!")
         print("-" * 50)
         tasks.append(self)
+        input("Press enter to continue.")
+        print()
+        menu()
 
-    def delete_task(self, tasks):
+    def delete_task(self):
         del self
-        # print("Please select a task to delete: ")
-        # for i, v in enumerate(tasks):
-        #     print(f"{i + 1}) {v.name}")
-        #
-        # while True:
-        #     selected = input("Please type in the number to delete (or done to exit): ")
-        #
-        #     if selected == "done":  # checks if value is done to break
-        #
-        #
-        #     try:  # checks to see if the value is an int else loop again
-        #         selected = int(selected)
-        #     except ValueError:
-        #         sleep(0.8)
-        #         print("Please enter a number or 'done'!")
-        #         continue
-        #
-        #     if 1 > selected > len(tasks):  # checks to see if it is in the range of the list index
-        #         sleep(0.8)
-        #         print(f"Please enter a number between 1-{len(tasks)}")
-        #         continue
-
-        # confirmation = input(f"Please type in the name of the task ({tasks[selected].name})")
